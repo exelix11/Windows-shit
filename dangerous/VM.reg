@@ -1,0 +1,20 @@
+Windows Registry Editor Version 5.00
+
+; Disable defender
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000001
+
+; Disable updates
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DisableWindowsUpdateAccess"=dword:00000001
+"WUServer"="127.0.0.1:80"
+"WUStatusServer"="127.0.0.1:80"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"UseWUServer"=dword:00000001
+
+; Misc, taken from windows sandbox
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"DisableLockScreenAppNotifications"=dword:00000001
+"DontDisplayNetworkSelectionUI"=dword:00000001
+"EnumerateLocalUsers"=dword:00000000

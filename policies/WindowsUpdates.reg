@@ -1,0 +1,16 @@
+Windows Registry Editor Version 5.00
+
+; Auto search and install updates every day
+; Install at 3 AM or whenever the user is afk
+; Should never auto reboot
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAutoRebootWithLoggedOnUsers"=dword:00000001
+"NoAutoUpdate"=dword:00000000
+"AUOptions"=dword:00000004
+"AutomaticMaintenanceEnabled"=dword:00000001
+"ScheduledInstallDay"=dword:00000000
+"ScheduledInstallTime"=dword:00000003
+"AllowMUUpdateService"=dword:00000001
