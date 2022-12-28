@@ -15,6 +15,7 @@ Windows Registry Editor Version 5.00
 "HideMergeConflicts"=dword:00000000
 "ShowPreviewHandlers"=dword:00000000
 "DontUsePowerShellOnWinX"=dword:00000001
+"LaunchTo"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Clipboard]
 "EnableClipboardHistory"=dword:00000001
