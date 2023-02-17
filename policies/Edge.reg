@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge]
+"HideFirstRunExperience"=dword:00000000
+"ShowRecommendationsEnabled"=dword:00000000
