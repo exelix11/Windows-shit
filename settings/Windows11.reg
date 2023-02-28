@@ -4,3 +4,26 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
 @=""
 
+; Left align, remove chat, widgets and task view
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"TaskbarAl"=dword:00000000
+"TaskbarDa"=dword:00000000
+"ShowTaskViewButton"=dword:00000000
+"TaskbarMn"=dword:00000000
+
+; Remove search
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=dword:00000000
+
+; Misc privacy options, some of these may be effective on 10 as well
+[HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000000
+
+[HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
+"IsDynamicSearchBoxEnabled"=dword:00000000
+"IsDeviceSearchHistoryEnabled"=dword:00000000
+"IsAADCloudSearchEnabled"=dword:00000000
+"IsMSACloudSearchEnabled"=dword:00000000
+
+[HKCU\Control Panel\International\User Profile]
+"HttpAcceptLanguageOptOut"=dword:00000001
