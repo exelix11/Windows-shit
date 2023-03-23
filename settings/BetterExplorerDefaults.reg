@@ -7,15 +7,6 @@ Windows Registry Editor Version 5.00
 ; Show hidden files and extensions
 "HideFileExt"=dword:00000000
 "Hidden"=dword:00000001
-
-;PRESET: ADV
-; Shows system hidden files
-"ShowSuperHidden"=dword:00000001
-
-;PRESET: SIM,ADV
-; Disable desktop preview on hover of the rightmost taskbar button
-"DisablePreviewDesktop"=dword:00000001
-"ShowTaskViewButton"=dword:00000000
 ; Don't suggest other windows on snap
 "SnapAssist"=dword:00000000
 ; Enable compact mode
@@ -23,20 +14,26 @@ Windows Registry Editor Version 5.00
 ; I don't remember what this is for --- "AlwaysShowMenus"=dword:00000001
 ; Remove edge tabs from alt tab
 "MultiTaskingAltTabFilter"=dword:00000003
-; Disable recent items
-"Start_TrackDocs"=dword:00000000
 ; Disable preview handles
 "ShowPreviewHandlers"=dword:00000000
-;PRESET: ADV
-; Restore CMD in the WIn + X menu
-"DontUsePowerShellOnWinX"=dword:00000001
-; Open this PC instead of recents
-"LaunchTo"=dword:00000001
-;PRESET: SIM,ADV
 ; Don't Minimize windows on mouse shake
 "DisallowShaking"=dword:00000001
+; Open this PC instead of recents
+"LaunchTo"=dword:00000001
 
 ;PRESET: ADV
+; Shows system hidden files
+"ShowSuperHidden"=dword:00000001
+; Disable desktop preview on hover of the rightmost taskbar button
+"DisablePreviewDesktop"=dword:00000001
+; Remove task view button from the taskbar
+"ShowTaskViewButton"=dword:00000000
+; Disable recent items
+"Start_TrackDocs"=dword:00000000
+; Restore CMD in the WIn + X menu
+"DontUsePowerShellOnWinX"=dword:00000001
+
+;PRESET: SIM,ADV
 ; Enable clipboard history
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Clipboard]
 "EnableClipboardHistory"=dword:00000001
