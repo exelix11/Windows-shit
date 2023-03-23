@@ -18,17 +18,15 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.x
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Run
       run: | 
         cd $GITHUB_WORKSPACE/.github/webui
         dotnet run $GITHUB_WORKSPACE
-        mdir deploy
-        mv $GITHUB_WORKSPACE/.github/webui/*.html deploy/
-        mv $GITHUB_WORKSPACE/.github/webui/*.js deploy/
+        mkdir $GITHUB_WORKSPACE/deploy
+        mv $GITHUB_WORKSPACE/.github/webui/*.html $GITHUB_WORKSPACE/deploy/
+        mv $GITHUB_WORKSPACE/.github/webui/*.js $GITHUB_WORKSPACE/deploy/
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.2.0
       with:
         branch: gh-pages
-        folder: deploy
+        folder: $GITHUB_WORKSPACE/deploy
