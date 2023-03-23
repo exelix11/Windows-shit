@@ -1,11 +1,16 @@
 Windows Registry Editor Version 5.00
 
-; Auto search and install updates every day
-; Install at 3 AM or whenever the user is afk
-; Should never auto reboot if a user is logged in
-; Windows may reboot on its own if no user is logged in
-; It's not possible to enable the never auto reboot flag without also configuring an update schedule
-; Imo this is a sane-enough configuration 
+;CAT: Windows updates
+;PRESET: ADV
+
+;; Auto search and install updates every day
+;; Install at 3 AM or whenever the user is afk
+;; Should never auto reboot if a user is logged in
+;; Windows may reboot on its own if no user is logged in
+;; It's not possible to enable the never auto reboot flag without also configuring an update schedule
+;; Imo this is a sane-enough configuration 
+
+; Search for updates every day, never auto reboot when an user is connected
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 

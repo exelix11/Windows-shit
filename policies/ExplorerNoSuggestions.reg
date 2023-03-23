@@ -1,4 +1,8 @@
 Windows Registry Editor Version 5.00
 
+;CAT: File Explorer
+;PRESET: ADV
+
+; Disable search box suggestions
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001

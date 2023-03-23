@@ -1,7 +1,11 @@
 Windows Registry Editor Version 5.00
 
-; Disables auto install of third party drivers on device plugin such as the razer thing that was going around some time ago
-; Literally impossible to find the name of this key....
+;CAT: Security
+;PRESET: SIM,ADV
 
+;; Disables auto install of third party drivers on device plugin such as the razer thing that was going around some time ago
+;; Literally impossible to find the name of this key....
+
+; Disable auto install of third party drivers on device plug (coff coff razer)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer]
 "DisableCoInstallers"=dword:00000001

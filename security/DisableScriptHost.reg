@@ -1,7 +1,12 @@
 Windows Registry Editor Version 5.00
 
+;CAT: Security
+;PRESET: SIM,ADV
+
+; Disable windows script host (Current user)
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows Script Host\Settings]
 "Enabled"=dword:00000000
 
+; Disable windows script host (Machine)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Script Host\Settings]
 "Enabled"=dword:00000000

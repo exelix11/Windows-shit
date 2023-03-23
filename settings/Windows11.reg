@@ -1,5 +1,8 @@
 Windows Registry Editor Version 5.00
 
+;CAT: Windows 11
+;PRESET: SIM,ADV
+
 ; Disable widgets
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh]
 "AllowNewsAndInterests"=dword:00000000
@@ -8,26 +11,28 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
 @=""
 
-; Left align, remove chat, widgets and task view
+; Classic taskbar (Left align, remove chat, widgets and task view)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "TaskbarAl"=dword:00000000
 "TaskbarDa"=dword:00000000
 "ShowTaskViewButton"=dword:00000000
 "TaskbarMn"=dword:00000000
 
-; Remove search
+; Remove search from taskbar
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
 "SearchboxTaskbarMode"=dword:00000000
 
-; Remove snapped windows groups
+; Disable snapped windows groups
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "EnableTaskGroups"=dword:00000000
+
+;PRESET: ADV
 
 ; Disable snap without reaching the border of the screen
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DITest"=dword:00000000
 
-; Misc privacy options, some of these may be effective on 10 as well
+; Misc privacy options (some of these may be effective on 10 as well)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackProgs"=dword:00000000
 
@@ -36,6 +41,9 @@ Windows Registry Editor Version 5.00
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 "IsAADCloudSearchEnabled"=dword:00000000
 "IsMSACloudSearchEnabled"=dword:00000000
+
+;PRESET: SIM,ADV
+; Hide local language from websites
 
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001

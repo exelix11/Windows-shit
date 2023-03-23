@@ -1,10 +1,21 @@
 Windows Registry Editor Version 5.00
 
+;CAT: File Explorer
+;PRESET: SIM,ADV
+
+; Disable "consumer experiences" (login nags etc)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 "DisableConsumerAccountStateContent"=dword:00000001
 "DisableSoftLanding"=dword:00000001
 "DisableCloudOptimizedContent"=dword:00000001
 
+[HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SystemPaneSuggestionsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+"PreInstalledAppsEnabled"=dword:00000000
+"OemPreInstalledAppsEnabled"=dword:00000000
+
+; Kill cortana
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 "AllowCortana"=dword:00000000

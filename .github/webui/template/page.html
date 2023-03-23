@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+		<title>Windows config templates</title>
+
+		<script src="page.js"></script>
+		
+		<style>
+			/* Muh keyboard navigation */
+			input:focus-visible {
+				outline: .3em solid white;
+			}
+		</style>
+	</head>
+	<body onload="Init()">
+		<main class="container">
+		<h1 style="margin-bottom: 0">Windows config templates</h1>
+		<p>Based on $GIT_HASH</p>
+		<p>Pick the options you want or start from a preset, then click generate to get your a single .bat configuration file.</p>
+		<label for="preset">Select a preset</label>
+		<select id="preset" name="preset" onchange="OnPresetChanged()">
+            $PAGE_PRESETS
+        </select>
+		$PAGE_CONTENT
+		<br>
+		<button onclick="Generate()">Generate</button>
+	</main>
+	</body>
+</html>
