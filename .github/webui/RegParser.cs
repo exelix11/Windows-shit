@@ -95,9 +95,16 @@ public record RegValue(string Path, string? Name, RegValueKind Kind, string Valu
 		_ => throw new NotImplementedException()
 	};
 
+	private string ValueForRegAdd => Kind switch 
+	{
+		RegValueKind.Dword => $"0x{Value}",
+		RegValueKind.String => Value,
+		_ => throw new NotImplementedException()
+	}
+
 	public string AsCmdCommand() {
 		if (Name is not null)
-			return $"reg add \"{Path}\" /v \"{Name}\" /t {KindString} /d \"{Value}\" /f";
+			return $"reg add \"{Path}\" /v \"{Name}\" /t {KindString} /d \"{ValueForRegAdd}\" /f";
 		else
 			return $"reg add \"{Path}\" /ve /t {KindString} /d \"{Value}\" /f";
 	}
