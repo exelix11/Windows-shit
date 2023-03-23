@@ -1,7 +1,12 @@
 Windows Registry Editor Version 5.00
 
-;CAT: Windows 11
+;CAT: Windows settings
 ;PRESET: SIM,ADV
+; Show "Networking connectivity" in Power Options for connected standby/S0
+[HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\F15576E8-98B7-4186-B944-EAFA664402D9]
+"Attributes"=dword:00000002
+
+;CAT: Windows 11
 
 ; Disable widgets
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh]
