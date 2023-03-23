@@ -52,17 +52,17 @@ Windows Registry Editor Version 5.00
 
 ;CAT: Privacy settings
 
+; Hide local language from websites
+[HKEY_CURRENT_USER\Control Panel\International\User Profile]
+"HttpAcceptLanguageOptOut"=dword:00000001
+
+;PRESET: SIM,ADV,NOSEC
+
 ; Misc privacy options (some of these may be effective on 10 as well)
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackProgs"=dword:00000000
-
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDynamicSearchBoxEnabled"=dword:00000000
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 "IsAADCloudSearchEnabled"=dword:00000000
 "IsMSACloudSearchEnabled"=dword:00000000
-
-;PRESET: ADV,NOSEC
-; Hide local language from websites
-[HKEY_CURRENT_USER\Control Panel\International\User Profile]
-"HttpAcceptLanguageOptOut"=dword:00000001

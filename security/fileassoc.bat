@@ -10,7 +10,7 @@ ftype jsefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype vbefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype vbsfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 
-::PRESET:
+::PRESET: SIM
 :: Disable bat files association
 ftype batfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 
