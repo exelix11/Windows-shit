@@ -14,10 +14,8 @@ Windows Registry Editor Version 5.00
 ; I don't remember what this is for --- "AlwaysShowMenus"=dword:00000001
 ; Remove edge tabs from alt tab
 "MultiTaskingAltTabFilter"=dword:00000003
-; Disable preview handles
+; Disable preview handlers
 "ShowPreviewHandlers"=dword:00000000
-; Don't Minimize windows on mouse shake
-"DisallowShaking"=dword:00000001
 ; Open this PC instead of recents
 "LaunchTo"=dword:00000001
 

@@ -33,7 +33,8 @@ function OnPresetChanged() {
 
 function Generate() 
 {
-	res = "";
+	res = "@echo off\r\n";
+	res += "echo Script from https://exelix11.github.io/Windows-shit/ \r\n";
 	
 	// IdToString is a map of ID to the text to add to res if checked
 	for (var id in IdToString) {
@@ -41,6 +42,8 @@ function Generate()
 			res += IdToString[id] + "\r\n";
 		}
 	}
+
+	res += "echo FINISHED\r\npause\r\n";
 
 	// Download res as a text file
 	var element = document.createElement('a');
