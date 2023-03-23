@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ;CAT: Security
-;PRESET: SIM,ADV
+;PRESET: SIM,ADV,NOSEC
 
 ; Disable autorun
 [HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]

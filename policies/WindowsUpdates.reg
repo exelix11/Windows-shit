@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ;CAT: Windows settings
-;PRESET: ADV
+;PRESET: ADV,SIM
 
 ;; Auto search and install updates every day
 ;; Install at 3 AM or whenever the user is afk

@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ;CAT: File Explorer
-;PRESET: ADV
+;PRESET: ADV,NOSEC
 
 ; Disable search box suggestions
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]

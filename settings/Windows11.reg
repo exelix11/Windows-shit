@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ;CAT: Windows settings
-;PRESET: SIM,ADV
+;PRESET: SIM,ADV,NOSEC
 ; Show "Networking connectivity" in Power Options for connected standby/S0
 [HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\F15576E8-98B7-4186-B944-EAFA664402D9]
 "Attributes"=dword:00000002
@@ -13,12 +13,12 @@ Windows Registry Editor Version 5.00
 ; Don't Minimize windows on mouse shake
 "DisallowShaking"=dword:00000001
 
-;PRESET: ADV
+;PRESET: ADV,NOSEC
 ; Disable window animations
 [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics\MinAnimate]
 "MinAnimate"=dword:00000000
 
-;PRESET: SIM,ADV
+;PRESET: SIM,ADV,NOSEC
 ;CAT: Windows 11
 
 ; Disable widgets
@@ -44,7 +44,7 @@ Windows Registry Editor Version 5.00
 ; Disable snap layouts on maximize button
 "EnableSnapAssistFlyout"=dword:00000000
 
-;PRESET: ADV
+;PRESET: ADV,NOSEC
 
 ; Disable snap without reaching the border of the screen
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -62,7 +62,7 @@ Windows Registry Editor Version 5.00
 "IsAADCloudSearchEnabled"=dword:00000000
 "IsMSACloudSearchEnabled"=dword:00000000
 
-;PRESET: SIM,ADV
+;PRESET: ADV,NOSEC
 ; Hide local language from websites
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001

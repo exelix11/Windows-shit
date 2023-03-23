@@ -55,14 +55,13 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v Enab
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableVirtualization /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 2 /f
 
-::PRESET: SIM
+::PRESET: ADV,SIM
 :: Disable powershellV2 (not latest powershell)
 powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWindowsPowerShellV2 -norestart
 powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWindowsPowerShellV2Root -norestart
 
 ::CAT: Privacy settings
-::PRESET: ADV,SIM
-
+::PRESET: ADV,SIM,NOSEC
 :: Set Windows Analytics to limited enhanced if enhanced is enabled
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v LimitEnhancedDiagnosticDataWindowsAnalytics /t REG_DWORD /d 1 /f
 
@@ -85,6 +84,5 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /v DisableSetting
 :: Disable the advertising ID
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t REG_DWORD /d 1 /f
 
-::PRESET: ADV
 :: Disable location data
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore" /v Location /t REG_SZ /d Deny /f

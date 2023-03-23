@@ -23,8 +23,9 @@ const string TempaltePreset = "<option value=\"{0}\">{1}</option>";
 
 Dictionary<string, string> PresetNames = new() {
 	{"NONE", "Clear all selected"},
-	{"SIM", "Simple"},
-	{"ADV", "Advanced user"}
+	{"SIM", "Simple user"},
+	{"ADV", "Advanced user"},
+	{"NOSEC", "Don't need security, don't get in my way" }
 };
 
 // Parse input files
