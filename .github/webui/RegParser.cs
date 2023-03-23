@@ -100,7 +100,7 @@ public record RegValue(string Path, string? Name, RegValueKind Kind, string Valu
 		RegValueKind.Dword => $"0x{Value}",
 		RegValueKind.String => Value,
 		_ => throw new NotImplementedException()
-	}
+	};
 
 	public string AsCmdCommand() {
 		if (Name is not null)
