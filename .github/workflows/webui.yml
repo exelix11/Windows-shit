@@ -9,8 +9,20 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build:
+  updateweb:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -25,8 +37,12 @@ jobs:
         mkdir $GITHUB_WORKSPACE/deploy
         mv $GITHUB_WORKSPACE/.github/webui/*.html $GITHUB_WORKSPACE/deploy/
         mv $GITHUB_WORKSPACE/.github/webui/*.js $GITHUB_WORKSPACE/deploy/
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.2.0
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
       with:
-        branch: gh-pages
-        folder: deploy
+          path: 'deploy'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
