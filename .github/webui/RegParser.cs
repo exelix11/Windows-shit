@@ -1,3 +1,5 @@
+using System.Globalization;
+
 public static class RegParser
 {
 	public static UIElement[] Parse(string reg)
@@ -88,6 +90,8 @@ public enum RegValueKind
 
 public record RegValue(string Path, string? Name, RegValueKind Kind, string Value) : IItem
 {
+	public bool IsUserOnly => Path.StartsWith("HKEY_CURRENT_USER") || Path.StartsWith("HKCU");
+
 	private string KindString => Kind switch
 	{
 		RegValueKind.Dword => "REG_DWORD",
@@ -102,7 +106,24 @@ public record RegValue(string Path, string? Name, RegValueKind Kind, string Valu
 		_ => throw new NotImplementedException()
 	};
 
+	public string ToRegEntry()
+	{
+		string StringValue() 
+		{
+			if (Kind == RegValueKind.Dword)
+				return $"dword:{uint.Parse(Value, NumberStyles.HexNumber):x8}";
+			else
+				return $"\"{Value}\"";
+		}
+
+		if (Name is not null)
+			return $"\"{Name}\"={StringValue()}";
+		else
+			return $"@={StringValue()}";
+	}
+
 	public string AsCmdCommand() {
+		throw new Exception("Deprecated");
 		if (Name is not null)
 			return $"reg add \"{Path}\" /v \"{Name}\" /t {KindString} /d \"{ValueForRegAdd}\" /f";
 		else

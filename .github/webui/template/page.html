@@ -16,14 +16,22 @@
 		<main class="container">
 		<h1 style="margin-bottom: 0">Windows config templates</h1>
 		<p>Based on $GIT_HASH</p>
-		<p>Pick the options you want or start from a preset, then click generate to get a single .bat configuration file.</p>
+		<p>Pick the options you want or start from a preset, then click generate to get the configuration scripts. You'll get a REG file with the registry changes and a bat file with commands to launch.</p>
 		<label for="preset">Select a preset</label>
 		<select id="preset" name="preset" onchange="OnPresetChanged()">
             $PAGE_PRESETS
         </select>
 		$PAGE_CONTENT
 		<br>
-		<button onclick="Generate()">Generate</button>
+		<div class="grid">
+			<button onclick="GenerateReg('all')">Generate REG</button>
+			<button onclick="GenerateBat()">Generate BAT</button>
+		</div>		
+		<p>If your user does not have administrator privileges you will first need to register run the process in three different steps: first register the user reg without admin, then the machine wide reg file and finally the other commands as admin</p>
+		<div class="grid">
+			<button onclick="GenerateReg('user')">Reg CURRENT_USER only</button>
+			<button onclick="GenerateReg('admin')">Reg LOCAL_MACHINE only</button>
+		</div>
 	</main>
 	</body>
 </html>

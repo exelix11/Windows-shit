@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Text;
+using System.Text.Json;
 
 const string TemplateSection = 
 """"
@@ -42,8 +43,11 @@ foreach (var file in Directory.GetFiles(args[0], "*.bat", SearchOption.AllDirect
 
 // Generate HTML and prepare JS data
 Dictionary<string, List<string>> JsPresets = PresetNames.Keys.ToDictionary(x => x, x => new List<string>());
-var htmlSb = new StringBuilder();
 Dictionary<string, string> JsCommands = new Dictionary<string, string>();
+Dictionary<string, string> JsRegUser = new Dictionary<string, string>();
+Dictionary<string, string> JsRegAdmin = new Dictionary<string, string>();
+
+var htmlSb = new StringBuilder();
 foreach (var g in entries.GroupBy(x => x.Category))
 {
 	var catSb = new StringBuilder();
@@ -55,7 +59,35 @@ foreach (var g in entries.GroupBy(x => x.Category))
 		foreach(var pres in v.Presets)
 			JsPresets[pres].Add(v.Id);
 
-		JsCommands.Add(v.Id, string.Join("\r\n", v.Items.Select(x => x.AsCmdCommand())));
+		if (v.Items[0] is RegValue r)
+		{
+			string? processGroup(IEnumerable<RegValue> values)
+			{
+				StringBuilder sb = new StringBuilder();
+				foreach (var k in values.GroupBy(x => x.Path))
+				{
+					sb.AppendLine($"[{k.Key}]");
+					sb.AppendJoin("\r\n", k.Select(x => x.ToRegEntry()));
+					sb.AppendLine();
+				}
+				if (sb.Length > 0)
+					return sb.ToString();
+				return null;
+			}
+
+			var admin = processGroup(v.Items.Cast<RegValue>().Where(x => !x.IsUserOnly));
+			var user = processGroup(v.Items.Cast<RegValue>().Where(x => x.IsUserOnly));
+
+			if (admin != null)
+				JsRegAdmin.Add(v.Id, admin);
+
+			if (user != null)
+				JsRegUser.Add(v.Id, user);
+		}
+		else 
+		{
+			JsCommands.Add(v.Id, string.Join("\r\n", v.Items.Select(x => x.AsCmdCommand())));
+		}
 	}
 
 	var name = g.Key;
@@ -87,6 +119,8 @@ for (int i = 0; i < JsPresets.Count; i++)
 }
 
 template = template.Replace("$JS_PRESETS", htmlSb.ToString());
-template = template.Replace("$JS_COMMANDS", System.Text.Json.JsonSerializer.Serialize(JsCommands));
+template = template.Replace("$JS_COMMANDS", JsonSerializer.Serialize(JsCommands));
+template = template.Replace("$JS_REG_USER", JsonSerializer.Serialize(JsRegUser));
+template = template.Replace("$JS_REG_ADMIN", JsonSerializer.Serialize(JsRegAdmin));
 
 File.WriteAllText("page.js", template);

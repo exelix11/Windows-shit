@@ -49,5 +49,6 @@ static class BatParser
 
 public record BatLine(string Value) : IItem
 {
-	public string AsCmdCommand() => Value;
+	public string AsCmdCommand() => Value.StartsWith("reg add") ? 
+		throw new Exception("Prefer using reg files for registry entries") : Value;
 }
