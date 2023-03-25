@@ -1,0 +1,99 @@
+Windows Registry Editor Version 5.00
+
+;CAT: Security
+
+;PRESET: SIM
+; Prevent DLL hijacking
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+"SafeDLLSearchMode"=dword:00000001
+
+;PRESET: ADV,SIM
+; Disable SMBv1 (Registry)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+"SMB1"=dword:00000000
+
+; Enable explorer exploit mitigation
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"NoDataExecutionPrevention"=dword:00000000
+"NoHeapTerminationOnCorruption"=dword:00000000
+
+; Disable auto printer driver download and printing over http
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers]
+"DisableWebPnPDownload"=dword:00000001
+"DisableHTTPPrinting"=dword:00000001
+
+; Disable auto-connection to open wifi hotspots 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
+"AutoConnectAllowedOEM"=dword:00000000
+
+; Prevent Kerberos from using DES or RC4
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters]
+"SupportedEncryptionTypes"=dword:7ffffff8
+
+; Prevent anonymous access and enumeration of SMB shares
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters]
+"RestrictNullSessAccess"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
+"RestrictAnonymousSAM"=dword:00000001
+"RestrictAnonymous"=dword:00000001
+"EveryoneIncludesAnonymous"=dword:00000000
+"RestrictRemoteSAM"="O:BAG:BAD:(A;;RC;;;BA)"
+"RestrictRemoteSAM"=dword:00000001
+"UseMachineId"=dword:00000001
+"LimitBlankPasswordUse"=dword:00000001
+
+; Disable RPC usage from a remote asset interacting with scheduled tasks
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Schedule]
+"DisableRpcOverTcp"=dword:00000001
+
+; Disable RPC usage from a remote asset interacting with services
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"DisableRemoteScmEndpoints"=dword:00000001
+
+;PRESET: ADV
+; Strict UAC mode
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableLUA"=dword:00000001
+"EnableVirtualization"=dword:00000001
+"ConsentPromptBehaviorAdmin"=dword:00000002
+
+;CAT: Privacy settings
+;PRESET: ADV,SIM,NOSEC
+
+; Set Windows Analytics to limited enhanced if enhanced is enabled
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+"LimitEnhancedDiagnosticDataWindowsAnalytics"=dword:00000001
+
+; Set Windows Telemetry to security only
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+"AllowTelemetry"=dword:00000000
+"MaxTelemetryAllowed"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack]
+"ShowedToastAtLevel"=dword:00000001
+
+; Prevent the Start Menu Search from providing internet results and using your location
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+"BingSearchEnabled"=dword:00000000
+"AllowSearchToUseLocation"=dword:00000000
+"CortanaConsent"=dword:00000000
+
+; Disable publishing of Win10 user activity 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"PublishUserActivities"=dword:00000001
+
+; Disable Win10 settings sync to cloud
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableSettingSync"=dword:00000002
+
+; Disable the advertising ID
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo]
+"DisabledByGroupPolicy"=dword:00000001
+
+; Disable location data
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore]
+"Location"="Deny"
