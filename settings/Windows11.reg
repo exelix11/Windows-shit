@@ -40,7 +40,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "EnableTaskGroups"=dword:00000000
 ; Disable snap suggestions when dragging window
-"EnableSnapAssistFlyout"=dword:00000000
+"EnableSnapBar"=dword:00000000
 ; Disable snap layouts on maximize button
 "EnableSnapAssistFlyout"=dword:00000000
 
