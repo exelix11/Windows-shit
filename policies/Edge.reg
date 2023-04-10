@@ -5,5 +5,5 @@ Windows Registry Editor Version 5.00
 
 ; Disable "consumer experiences"
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge]
-"HideFirstRunExperience"=dword:00000000
+"HideFirstRunExperience"=dword:00000001
 "ShowRecommendationsEnabled"=dword:00000000
