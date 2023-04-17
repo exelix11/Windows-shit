@@ -7,3 +7,10 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge]
 "HideFirstRunExperience"=dword:00000001
 "ShowRecommendationsEnabled"=dword:00000000
+
+;PRESET: SIM,ADV
+
+; Enforce DNS over HTTPS (hardcoded providers, in order: Cloudflare, google, quad9)
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge]
+"DnsOverHttpsMode"="secure"
+"DnsOverHttpsTemplates"="https://cloudflare-dns.com/dns-query https://dns.google/dns-query https://dns.quad9.net/dns-query"
