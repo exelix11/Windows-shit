@@ -36,7 +36,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Clipboard]
 "EnableClipboardHistory"=dword:00000001
 
-; Disable CTRL + Shift language switch hotley
+; Disable CTRL + Shift language switch hotkey
 [HKEY_CURRENT_USER\Keyboard Layout\Toggle]
 "Language Hotkey"="3"
 "Hotkey"="3"
