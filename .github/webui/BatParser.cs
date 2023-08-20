@@ -30,6 +30,10 @@ static class BatParser
 				FinishGroup();
 				builder.Presets = line[9..].Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 			}
+			else if (line.StartsWith("::::"))
+			{
+				// skip comment lines
+			}
 			else if (line.StartsWith(":: "))
 			{
 				FinishGroup();
@@ -37,7 +41,8 @@ static class BatParser
 			}
 			else 
 			{
-				builder.AddItem(new BatLine(line));
+				if (!string.IsNullOrWhiteSpace(line))
+					builder.AddItem(new BatLine(line));
 			}
 		}
 

@@ -21,12 +21,12 @@ powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWind
 
 ::CAT: Windows settings
 
-:: There's a lot to unpack in the following snippet: 
-::   Get-CimInstance ... % { $_.Split(..) }: gets the current power profile guids (some may be set by oems)
-::   POWERCFG /SETDCVALUEINDEX: sets the option for when battery powered
-::   POWERCFG /SETACVALUEINDEX: sets the option for when AC powered
-::   238c9fa8-0aad-41ed-83f4-97be242c8f20 is the GUID for the sleep options group
-::	 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d is the GUID for the RTCWake option
-:: 
+:::: There's a lot to unpack in the following snippet: 
+::::   Get-CimInstance ... % { $_.Split(..) }: gets the current power profile guids (some may be set by oems)
+::::   POWERCFG /SETDCVALUEINDEX: sets the option for when battery powered
+::::   POWERCFG /SETACVALUEINDEX: sets the option for when AC powered
+::::   238c9fa8-0aad-41ed-83f4-97be242c8f20 is the GUID for the sleep options group
+::::   bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d is the GUID for the RTCWake option
+
 :: Globally disable Wakeup timers (eg auto resume from sleep for updates)
 powershell.exe -c "(Get-CimInstance -Name root\cimv2\power -Class win32_PowerPlan).InstanceID | % { $_.Split(@('{','}'))[1] } | % { Write-Host Applying changes to $_; POWERCFG /SETDCVALUEINDEX $_ 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0; POWERCFG /SETACVALUEINDEX $_ 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0;}"

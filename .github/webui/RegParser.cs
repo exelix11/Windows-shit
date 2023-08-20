@@ -38,6 +38,10 @@ public static class RegParser
 			}
 			else if (line.StartsWith("["))
 				CurrentRoot = line[1..^1];
+			else if (line.StartsWith(";; "))
+			{
+				// Skip comment lines
+			}
 			else if (line.StartsWith("; "))
 			{
 				FinishGroup();
