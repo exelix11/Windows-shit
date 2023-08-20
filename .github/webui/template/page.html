@@ -27,7 +27,12 @@
 			<button onclick="GenerateReg('all')">Generate REG</button>
 			<button onclick="GenerateBat()">Generate BAT</button>
 		</div>		
-		<p>If your user does not have administrator privileges you will first need to register run the process in three different steps: first register the user reg without admin, then the machine wide reg file and finally the other commands as admin</p>
+		<p>If your user does not have administrator privileges you will first need to run the process in three different steps: <br>
+		<ol>
+			<li>Register the user-only reg without admin</li>
+			<li>Register the machine-wide reg with admin rights</li>
+			<li>Run the bat file as admin</li>
+		</ol></p>
 		<div class="grid">
 			<button onclick="GenerateReg('user')">Reg CURRENT_USER only</button>
 			<button onclick="GenerateReg('admin')">Reg LOCAL_MACHINE only</button>
