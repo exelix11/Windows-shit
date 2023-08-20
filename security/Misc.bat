@@ -21,7 +21,9 @@ powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWind
 
 ::CAT: Windows settings
 
-:::: There's a lot to unpack in the following snippet: 
+:::: The following snippet uses base64 encoding to prevent cmd to powershell escape issues with quotes
+::::   It decodes to the following command (UTF16): (Get-CimInstance -Name root\cimv2\power -Class win32_PowerPlan).InstanceID | % { $_.Split(@('{','}'))[1] } | % { Write-Host Applying changes to $_; POWERCFG /SETDCVALUEINDEX $_ 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0; POWERCFG /SETACVALUEINDEX $_ 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0;}
+:::: There's a lot to unpack here: 
 ::::   Get-CimInstance ... % { $_.Split(..) }: gets the current power profile guids (some may be set by oems)
 ::::   POWERCFG /SETDCVALUEINDEX: sets the option for when battery powered
 ::::   POWERCFG /SETACVALUEINDEX: sets the option for when AC powered
@@ -29,4 +31,4 @@ powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWind
 ::::   bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d is the GUID for the RTCWake option
 
 :: Globally disable Wakeup timers (eg auto resume from sleep for updates)
-powershell.exe -c "(Get-CimInstance -Name root\cimv2\power -Class win32_PowerPlan).InstanceID | % { $_.Split(@('{','}'))[1] } | % { Write-Host Applying changes to $_; POWERCFG /SETDCVALUEINDEX $_ 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0; POWERCFG /SETACVALUEINDEX $_ 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0;}"
+powershell.exe -ec KABHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0ATgBhAG0AZQAgAHIAbwBvAHQAXABjAGkAbQB2ADIAXABwAG8AdwBlAHIAIAAtAEMAbABhAHMAcwAgAHcAaQBuADMAMgBfAFAAbwB3AGUAcgBQAGwAYQBuACkALgBJAG4AcwB0AGEAbgBjAGUASQBEACAAfAAgACUAIAB7ACAAJABfAC4AUwBwAGwAaQB0ACgAQAAoACcAewAnACwAJwB9ACcAKQApAFsAMQBdACAAfQAgAHwAIAAlACAAewAgAFcAcgBpAHQAZQAtAEgAbwBzAHQAIABBAHAAcABsAHkAaQBuAGcAIABjAGgAYQBuAGcAZQBzACAAdABvACAAJABfADsAIABQAE8AVwBFAFIAQwBGAEcAIAAvAFMARQBUAEQAQwBWAEEATABVAEUASQBOAEQARQBYACAAJABfACAAMgAzADgAYwA5AGYAYQA4AC0AMABhAGEAZAAtADQAMQBlAGQALQA4ADMAZgA0AC0AOQA3AGIAZQAyADQAMgBjADgAZgAyADAAIABiAGQAMwBiADcAMQA4AGEALQAwADYAOAAwAC0ANABkADkAZAAtADgAYQBiADIALQBlADEAZAAyAGIANABhAGMAOAAwADYAZAAgADAAOwAgAFAATwBXAEUAUgBDAEYARwAgAC8AUwBFAFQAQQBDAFYAQQBMAFUARQBJAE4ARABFAFgAIAAkAF8AIAAyADMAOABjADkAZgBhADgALQAwAGEAYQBkAC0ANAAxAGUAZAAtADgAMwBmADQALQA5ADcAYgBlADIANAAyAGMAOABmADIAMAAgAGIAZAAzAGIANwAxADgAYQAtADAANgA4ADAALQA0AGQAOQBkAC0AOABhAGIAMgAtAGUAMQBkADIAYgA0AGEAYwA4ADAANgBkACAAMAA7AH0A
