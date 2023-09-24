@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+;CAT: Office
+;PRESET: SIM,ADV,NOSEC
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\General]
+; Default to local file save locations
+"PreferCloudSaveLocations"=dword:00000000
+"SkyDriveSignInOption"=dword:00000000
+; Use old file save dialog
+"SkipOpenAndSaveAsPlace"=dword:00000001
