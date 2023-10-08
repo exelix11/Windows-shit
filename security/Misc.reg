@@ -54,6 +54,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
 "DisableRemoteScmEndpoints"=dword:00000001
 
+; Disable remote shell icons in explorer
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"EnableShellShortcutIconRemotePath"=dword:00000000
+
 ;PRESET: ADV
 ; Strict UAC mode
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
