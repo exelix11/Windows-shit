@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+"DenyDeviceIDs"=dword:00000001
+"DenyDeviceIDsRetroactive"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDs]
+"1"="ACPI\\HPIC0003" ;HP Application Driver
+"2"="ACPI\\HPIC0004" ;HP Omen Driver
+"3"="ACPI\\HPIC000C"
+"4"="SWC\\HPIC0003" ;HP Application Driver Component
+"5"="SWC\\HPAnalytics" ;HP Insights Analytics
+"6"="SWC\\HPIC0004" ;HP Omen Driver Component
+; OPTIONAL
+; SWC\\VEN_10EC&HID_0004 HP Audio Hardware Support Application
