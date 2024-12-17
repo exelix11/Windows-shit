@@ -15,7 +15,7 @@ ftype vbsfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype batfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 
 ::PRESET: ADV,SIM
-::CAT: Defender advanced settings (Windows Pro/Enterprise/Education only)
+::CAT: Defender Attack Surface Reduction Rules (Windows Pro/Enterprise/Education only)
 
 :: Block Office application from creating child processes 
 powershell.exe Add-MpPreference -AttackSurfaceReductionRules_Ids D4F940AB-401B-4EFC-AADC-AD5F3C50688A -AttackSurfaceReductionRules_Actions Enabled
