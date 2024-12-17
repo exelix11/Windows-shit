@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+;CAT: Security
+;PRESET: SIM
+
+; See https://x.com/cyb3rops/status/1868922893981409375
+
+; Disable Win + R hotkey. Prevents some phishing attacks based on copy-pasting code. Major annoyance for power users.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoRun"=dword:00000001
