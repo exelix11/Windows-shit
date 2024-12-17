@@ -26,7 +26,7 @@ Dictionary<string, string> PresetNames = new() {
 	{"NONE", "Clear all selected"},
 	{"SIM", "Simple user"},
 	{"ADV", "Advanced user"},
-	{"NOSEC", "Don't need security, don't get in my way" }
+	{"NOSEC", "Don't need security, don't get in my way. Only for Test VMs." }
 };
 
 // Parse input files

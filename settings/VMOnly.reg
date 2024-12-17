@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+;CAT: DANGEROUS only use in VM
+;PRESET: NOSEC
+
+; Completely disable Windows Updates using localhost WSUS
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DisableWindowsUpdateAccess"=dword:00000001
+"WUServer"="127.0.0.1:80"
+"WUStatusServer"="127.0.0.1:80"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"UseWUServer"=dword:00000001
