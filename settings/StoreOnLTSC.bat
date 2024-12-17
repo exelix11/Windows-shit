@@ -5,7 +5,7 @@
 wsreset -i
 pause 20
 
-::Preset:
+::PRESET: 
 
 :: Install Xbox Game Bar on LTSC (might require manual confirmation)
 :::: https://www.microsoft.com/store/productId/9NZKPSTSNW4P?ocid=libraryshare
